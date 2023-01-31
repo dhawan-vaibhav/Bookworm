@@ -24,7 +24,7 @@
       <input type="text" name="q" />
       <input type="submit" value="search" />
     </form>
-    <ol id="list"></ol>
+    <div id="search-results"></div>
     <script>
       let search = document.getElementById("search");
       search.addEventListener("keyup", function (event) {
@@ -35,13 +35,18 @@
           .then((data) => {
             const array = data.docs;
             let html = "";
-            array.forEach((element) => {
-              html += `<li> ${element.title} </li>`;
-            });
-            document.getElementById("list").innerHTML = html;
+            for (let i = 0; i < 10; i++) {
+              bookInfo = array[i];
+              html += `<div>${bookInfo.title}</div>`;
+            }
+            document.getElementById("search-results").innerHTML = html;
           })
           .catch((error) => console.error(error));
       });
+      function addBook(element) {
+        document.getElementById("list").innerHTML = "";
+        console.log(element, "Hello");
+      }
     </script>
   </body>
 </html>
