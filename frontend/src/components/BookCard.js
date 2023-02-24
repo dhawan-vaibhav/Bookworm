@@ -1,23 +1,15 @@
 import React from "react";
 
 const BookCard = ({ book: { volumeInfo } }) => {
-  const { title, authors, imageLinks } = volumeInfo;
-
-  console.log(title, authors, imageLinks, "wtf");
+  const { title } = volumeInfo;
 
   return (
     <div className="book">
       <div>
-        <p>Title: {title}</p>
+        <p>{title}</p>
       </div>
       <div>
-        <img
-          src={
-            imageLinks
-              ? imageLinks.thumbnail
-              : "https://image-placeholder.com/images/actual-size/120x150.png"
-          }
-        />
+        <button>Add</button>
       </div>
     </div>
   );
